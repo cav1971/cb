@@ -106,3 +106,13 @@ Mode                 LastWriteTime         Length Name
       - name: Smoke check build output
         run: node dist/index.js
 ```
+на стадии CI увидели зеленый свет!!!
+но стадия CD принесла новые ошибки.
+```
+Run bash scripts/deploy.sh artifacts deploy/staging
+Artifact directory not found: artifacts
+Error: Process completed with exit code 1.
+```
+здесь также перепутаны пути, артифакты были восстановлены в путь artifact, а мы по ошибке использовали множественное число artifacts
+
+пушим коммитим.

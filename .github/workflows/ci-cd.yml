@@ -68,7 +68,7 @@ jobs:
           path: artifact
 
       - name: Deploy
-        run: bash scripts/deploy.sh artifacts deploy/staging
+        run: bash scripts/deploy.sh artifact deploy/staging
 
       - name: Show deployed files
         run: ls -la deploy/staging
