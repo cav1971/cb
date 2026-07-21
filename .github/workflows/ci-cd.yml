@@ -37,7 +37,7 @@ jobs:
         run: npm run build
 
       - name: Smoke check build output
-        run: node dist/main.js
+        run: node dist/index.js
 
       - name: Upload artifact
         if: success()

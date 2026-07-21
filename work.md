@@ -64,3 +64,45 @@ Error: Process completed with exit code 1.
 ```
 да действительно в файле пакетов этой строки небыло, было просто lint
 исправляем и проверяем снова
+
+опять словили ошибку.
+```
+Run node dist/main.js
+node:internal/modules/cjs/loader:1520
+  throw err;
+  ^
+
+Error: Cannot find module '/home/runner/work/cb/cb/dist/main.js'
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1517:15)
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1122:12)
+    at Module._load (node:internal/modules/cjs/loader:1294:5)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: []
+}
+
+Node.js v24.18.0
+Error: Process completed with exit code 1.
+```
+сразу скажу, что с помощю ИИ прямого ответа я не получил, только намеки на то что файла dist/main.js  нет, для решения данной проблемы я в терминале выполнил команду
+```
+npm run build
+```
+которая успешно выполнилась, и создала каталог dist в котором я посмотрел получившиеся файлы, в нашем случае это:
+```
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---          21.07.2026    23:04             38 build-info.txt
+-a---          21.07.2026    23:04            144 index.js
+-a---          21.07.2026    23:04            131 orderedPair.js
+-a---          21.07.2026    23:04             82 sum.js
+```
+исправляем актион и продолжает проверку
+```      
+      - name: Smoke check build output
+        run: node dist/index.js
+```
