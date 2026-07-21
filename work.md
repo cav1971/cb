@@ -47,3 +47,20 @@ Error: Some specified paths were not resolved, unable to cache dependencies.
 Отсутствие файла блокировки. Вы указали параметр cache-dependency-path: package-locks.json. Если файл package-locks.json отсутствует в корне репозитория или находится в другой директории, действие не находит указанный путь и прерывает кэширование. Также ошибка возникнет, если используется менеджер пакетов Yarn (yarn.lock) или PNPM (pnpm-lock.yaml), а указан путь для NPM.
 ``` 
 исправляем имя файла пакетов и повторяем коммит.
+следующую проблему словили на lint
+```
+Run npm run lint:ci
+npm error Missing script: "lint:ci"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-07-21T17_54_42_491Z-debug-0.log
+Error: Process completed with exit code 1.
+```
+что ответил ИИ
+```
+Почему это произошло (первая проблема):
+Пайплайн ожидает найти скрипт для линтинга именно под ключом "lint:ci", но его там нет. Это частое расхождение между конфигурацией CI/CD и локальным проектом. Название могло измениться при рефакторинге, или вы скопировали чужой шаблон workflow без адаптации под свой проект.
+```
+да действительно в файле пакетов этой строки небыло, было просто lint
+исправляем и проверяем снова

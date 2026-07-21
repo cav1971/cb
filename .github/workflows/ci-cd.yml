@@ -27,11 +27,11 @@ jobs:
         run: npm ci
 
       - name: Run lint
-        run: npm run lint:ci
+        run: npm run lint
 
-      - name: Run tests
+      - name: Run test:ci
         working-directory: test
-        run: npm run test:ci
+        run: npm run test
 
       - name: Build
         run: npm run build
